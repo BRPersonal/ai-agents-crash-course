@@ -10,4 +10,11 @@ Add the following entries to your .env
 OPENAI_API_KEY=your-api-key
 OPENAI_DEFAULT_MODEL=your-model
 
+Setting up PyCharm 
+---------- 
+OPen the project folder in pyCharm. It will say Python interpreter is not configured. 
+Click on configure click on add interpreter, click on add local , select "Existing" tab" and then naviage to 
+the folder /Applications/anaconda3/envs/ai-agent/bin/python and click ok. 
+Now open a terminal and you should see virtual environment activated prompt like this
+(ai-agent) $
 
