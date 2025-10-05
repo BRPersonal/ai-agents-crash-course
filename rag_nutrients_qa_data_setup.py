@@ -150,9 +150,10 @@ if __name__ == "__main__":
     # Test query : Search for malnutrition symptoms
     print("=== Query: pregnancy ===")
     results = nutrition_qna.query(query_texts=["pregnancy"], n_results=3)
-    for i, doc in enumerate(results["documents"][0]):
+    documents = results["documents"][0]
+    for i, doc in enumerate(documents):
         print(f"Result {i+1}:")
-        print(f"Document: {results['documents'][0][i]}")
+        print(f"Document: {documents[i]}")
         print("\n")
 
     print("\n" + "=" * 50 + "\n")

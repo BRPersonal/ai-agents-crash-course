@@ -27,10 +27,13 @@ simplest_agent.py
 #2)
 tool_calling.py
 
-#3)
+#3) load data into chroma db
 rag_calories_data_setup.py
 rag_nutrients_qa_data_setup.py
 
-#4)
-rag.py
+#4) query rag chroma db as a tool
+rag_calories_query.py
+rag_nutrients_query.py
+
+
 

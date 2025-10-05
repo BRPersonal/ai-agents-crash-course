@@ -1,6 +1,5 @@
 from agents import Agent, ModelSettings, Runner, function_tool, trace
 import chromadb
-from pathlib import Path
 from utils.app_config import AppConfig
 import asyncio
 
