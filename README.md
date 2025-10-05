@@ -18,3 +18,19 @@ the folder /Applications/anaconda3/envs/ai-agent/bin/python and click ok.
 Now open a terminal and you should see virtual environment activated prompt like this
 (ai-agent) $
 
+
+Running code samples
+--------------
+#1)
+simplest_agent.py
+
+#2)
+tool_calling.py
+
+#3)
+rag_calories_data_setup.py
+rag_nutrients_qa_data_setup.py
+
+#4)
+rag.py
+
