@@ -6,13 +6,13 @@ from agents import Agent, Runner, trace
 from openai.types.responses import ResponseTextDeltaEvent
 
 # load the environment
-_ = AppConfig()
+config = AppConfig()
 
 # Test OpenAI Access
 print(
     OpenAI()
     .responses.create(
-        model=os.environ["OPENAI_DEFAULT_MODEL"], input="Say: We are up and running!"
+        model=config.get_open_ai_default_model(), input="Say: We are up and running!"
     )
     .output_text
 )
