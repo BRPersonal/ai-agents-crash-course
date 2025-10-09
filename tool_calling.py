@@ -23,6 +23,7 @@ def get_food_calories(food_item: str) -> str:
         "broccoli": "25 calories per 1 cup chopped (91g)",
         "almonds": "164 calories per 1oz (28g) or about 23 nuts",
     }
+    print(f"get_food_calories called for food_item:{food_item}")
 
     food_key = food_item.lower()
     if food_key in calorie_data:
@@ -44,7 +45,7 @@ calorie_agent = Agent(
 async def main():
     with trace("Nutrition Assistant with tools"):
         result = await Runner.run(
-            calorie_agent, "How many calories are in total in a banana and an apple?"
+            calorie_agent, "How many calories are in total in twenty bananas and an apple and a cup of grapes?"
         )
         print(result.final_output)
 
