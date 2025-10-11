@@ -18,6 +18,9 @@ the folder /Applications/anaconda3/envs/ai-agent/bin/python and click ok.
 Now open a terminal and you should see virtual environment activated prompt like this
 (ai-agent) $
 
+You can also click on current interpreter shown in bottom right panel and 
+click on add new interpreter and set it
+
 
 Running code samples
 --------------
@@ -28,8 +31,8 @@ simplest_agent.py
 tool_calling.py
 
 #3) load data into chroma db
-rag_calories_data_setup.py
-rag_nutrients_qa_data_setup.py
+rag_calories_data_setup.py - loads tabular data from csv
+rag_nutrients_qa_data_setup.py - loads unstructured text data from text 
 
 #4) query rag chroma db as a tool
 rag_calories_query.py

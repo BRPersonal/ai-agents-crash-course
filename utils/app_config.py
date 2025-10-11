@@ -31,6 +31,7 @@ class AppConfig:
 
         self.open_ai_api_key = os.getenv("OPENAI_API_KEY")
         self.open_ai_default_model = os.getenv("OPENAI_DEFAULT_MODEL")
+        self.exa_api_key = os.getenv("EXA_API_KEY")
 
         if not self.open_ai_api_key:
             raise ValueError("OPENAI_API_KEY is not set")
@@ -40,6 +41,9 @@ class AppConfig:
 
     def get_open_ai_default_model(self):
         return self.open_ai_default_model
+
+    def get_exa_api_key(self):
+        return self.exa_api_key
 
 
 # Example usage
@@ -53,3 +57,4 @@ if __name__ == "__main__":
     print(config1.get_open_ai_api_key())
     print(config2.get_open_ai_api_key())
     print(config1.get_open_ai_default_model())
+    print(config2.get_exa_api_key())
