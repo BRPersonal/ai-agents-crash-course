@@ -1,5 +1,4 @@
 from openai import OpenAI
-import os
 import asyncio
 from utils.app_config import AppConfig
 from agents import Agent, Runner, trace
