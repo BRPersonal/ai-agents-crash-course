@@ -1,5 +1,5 @@
 """
-This program is same as mcp.py except that
+This program is same as mcp_exa_search.py except that
 exa search mcp is replaced by open ai built in web search tool
 You achieve the same functonality with both
 """
@@ -68,11 +68,15 @@ calorie_agent_with_search = Agent(
 
 async def main():
 
+    question = "How many calories are in an english breakfast?"
     #This search will involve mcp
     with trace("Nutrition Assistant with OpenAI built-in tool WebSearch"):
+
+        print(f"Answering question:{question}")
+
         result = await Runner.run(
             calorie_agent_with_search,
-            "How many calories are in an english breakfast?"
+            question
         )
         print(result.final_output)
 
