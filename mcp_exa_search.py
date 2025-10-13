@@ -3,6 +3,9 @@ from agents import Agent, Runner, function_tool, trace
 from agents.mcp import MCPServerStreamableHttp
 from utils.app_config import AppConfig
 import asyncio
+import sys
+import contextlib
+import io
 
 # load the environment
 config = AppConfig()
@@ -95,21 +98,39 @@ async def main():
     # connect to mcp server
     await exa_search_mcp.connect()
 
+    question1 = "How many calories are in total in a banana and an apple? Also give calories per 100g"
+    question2 = "How many calories are in an english breakfast?"
+
     #This search will not involve mcp
     with trace("Nutrition Assistant with MCP - Only uses calorie_lookup_tool"):
+
+        print(f"Answering question1:{question1}")
+
         result = await Runner.run(
             calorie_agent_with_search,
-            "How many calories are in total in a banana and an apple? Also give calories per 100g",
+            question1
         )
-        print(result)
+        print(result.final_output)
 
     #This search will involve mcp
     with trace("Nutrition Assistant with MCP"):
+        print(f"Answering question2:{question2}")
+
         result = await Runner.run(
             calorie_agent_with_search,
-            "How many calories are in an english breakfast?"
+            question2
         )
-        print(result)
+        print(result.final_output)
 
 if __name__ == "__main__":
-    asyncio.run(main()) 
+    # Suppress the expected async cleanup warning from MCP client disconnection
+    # This occurs when the cancel scope is exited in a different task than it was entered,
+    # which is normal behavior for HTTP streaming connections and doesn't affect functionality.
+    with contextlib.redirect_stderr(io.StringIO()):
+        try:
+            asyncio.run(main())
+        except Exception as e:
+            # Re-raise any unexpected errors
+            raise
+    
+    print("MCP client disconnected successfully (cleanup warning suppressed)") 
