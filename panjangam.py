@@ -1,9 +1,6 @@
 from agents import Agent, Runner, WebSearchTool,function_tool, trace
-from utils.app_config import AppConfig
+from utils.config import settings
 import asyncio
-
-# load the environment
-config = AppConfig()
 
 panjangam_agent = Agent(
     name="Panjangam Assistant",

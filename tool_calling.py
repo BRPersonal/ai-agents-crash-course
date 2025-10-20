@@ -1,9 +1,7 @@
 from agents import Agent, ModelSettings, Runner, function_tool, trace
-from utils.app_config import AppConfig
 import asyncio
+from utils.config import settings
 
-# load the environment
-_ = AppConfig()
 
 @function_tool
 def get_food_calories(food_item: str) -> str:

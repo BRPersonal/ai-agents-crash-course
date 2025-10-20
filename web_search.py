@@ -6,11 +6,9 @@ You achieve the same functonality with both
 
 import chromadb
 from agents import Agent, Runner, WebSearchTool,function_tool, trace
-from utils.app_config import AppConfig
+from utils.config import settings
 import asyncio
 
-# load the environment
-config = AppConfig()
 
 chroma_client = chromadb.PersistentClient(path="chroma")
 nutrition_db = chroma_client.get_collection(name="nutrition_db")
