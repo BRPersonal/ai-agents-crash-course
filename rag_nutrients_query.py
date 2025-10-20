@@ -1,10 +1,7 @@
 from agents import Agent, Runner, trace, function_tool
 import chromadb
-from utils.app_config import AppConfig
 import asyncio
-
-# load the environment
-_ = AppConfig()
+from utils.config import settings
 
 chroma_client = chromadb.PersistentClient(path="chroma")
 calories_db = chroma_client.get_collection(name="nutrition_db")

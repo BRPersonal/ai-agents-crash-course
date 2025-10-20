@@ -1,13 +1,11 @@
 import chromadb
 from agents import Agent, Runner, WebSearchTool, function_tool, trace
+from utils.config import settings
 from agents.mcp import MCPServerStreamableHttp
-from utils.app_config import AppConfig
 import asyncio
 import contextlib
 import io
 
-# load the environment
-config = AppConfig()
 
 chroma_client = chromadb.PersistentClient(path="chroma")
 nutrition_db = chroma_client.get_collection(name="nutrition_db")
@@ -48,7 +46,7 @@ def calorie_lookup_tool(query: str, max_results: int = 3) -> str:
 exa_search_mcp = MCPServerStreamableHttp(
     name="Exa Search MCP",
     params={
-        "url": f"https://mcp.exa.ai/mcp?exaApiKey={config.get_exa_api_key()}",
+        "url": f"https://mcp.exa.ai/mcp?exaApiKey={settings.EXA_API_KEY}",
         "timeout": 30,
     },
     client_session_timeout_seconds=30,

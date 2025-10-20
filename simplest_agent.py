@@ -1,17 +1,15 @@
 from openai import OpenAI
 import asyncio
-from utils.app_config import AppConfig
 from agents import Agent, Runner, trace
 from openai.types.responses import ResponseTextDeltaEvent
+from utils.config import settings
 
-# load the environment
-config = AppConfig()
 
 # Test OpenAI Access
 print(
     OpenAI()
     .responses.create(
-        model=config.get_open_ai_default_model(), input="Say: We are up and running!"
+        model=settings.OPENAI_DEFAULT_MODEL, input="Say: We are up and running!"
     )
     .output_text
 )
@@ -36,7 +34,7 @@ async def main(streaming_response:bool = False):
                     print(event.data.delta, end="", flush=True)
         else:
             result = await Runner.run(nutrition_agent, "How healthy are bananas?")
-            print(result)
+            print(result.final_output)
 
 if __name__ == "__main__":
     #execute the agent

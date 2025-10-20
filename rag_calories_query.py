@@ -1,11 +1,9 @@
 from agents import Agent, ModelSettings, Runner, function_tool, trace
 import chromadb
-from utils.app_config import AppConfig
 import asyncio
+from utils.config import settings
 
-# load the environment
-_ = AppConfig()
-
+  
 chroma_client = chromadb.PersistentClient(path="chroma")
 nutrition_db = chroma_client.get_collection(name="nutrition_db")
 
