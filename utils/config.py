@@ -13,6 +13,8 @@ class Settings(BaseSettings):
 settings = Settings()
 
 # Ensure the environment variable is set for libraries that need it
+# This is actually a bad design from openai - burying env variables 
+# names deep inside their libraries
 os.environ["OPENAI_API_KEY"] = settings.OPENAI_API_KEY
 os.environ["OPENAI_DEFAULT_MODEL"] = settings.OPENAI_DEFAULT_MODEL
 
