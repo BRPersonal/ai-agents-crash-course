@@ -23,20 +23,23 @@ nutrition_agent = Agent(
     """,
 )
 
-async def main(streaming_response:bool = False):
+async def main(question:str,streaming_response:bool = False):
+    print(f"Question: {question}")
+    
     with trace("Simple Nutrition Agent"):
         if streaming_response:
-            response_stream = Runner.run_streamed(nutrition_agent, "How healthy are bananas?")
+            response_stream = Runner.run_streamed(nutrition_agent, question)
             async for event in response_stream.stream_events():
                 if event.type == "raw_response_event" and isinstance(
                         event.data, ResponseTextDeltaEvent
                 ):
                     print(event.data.delta, end="", flush=True)
         else:
-            result = await Runner.run(nutrition_agent, "How healthy are bananas?")
+            result = await Runner.run(nutrition_agent, question)
             print(result.final_output)
 
 if __name__ == "__main__":
     #execute the agent
+    question = "How healthy are bananas?"
     choice = input("Streaming Response (y/n):")
-    asyncio.run(main(choice.lower() == "y"))
+    asyncio.run(main(question,choice.lower() == "y"))
