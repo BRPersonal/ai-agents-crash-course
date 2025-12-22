@@ -96,7 +96,7 @@ async def main():
     # connect to mcp server
     await exa_search_mcp.connect()
 
-    question1 = "How many calories are in total in a banana and an apple? Also give calories per 100g"
+    question1 = "How many calories are in total in a banana and an custard apple? Also give calories per 100g"
     question2 = "How many calories are in an english breakfast?"
 
     #This search will not involve mcp
